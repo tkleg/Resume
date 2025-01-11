@@ -1,0 +1,107 @@
+     1                                  ; NAME:  Bob Allen
+     2                                  ; Struc Demo adding Scores
+     3                                  ; Date: Fall 2023
+     4                                  
+     5                                  
+     6                                  ; Constant for Size of array of structs
+     7                                  LEN:	EQU	5
+     8                                  
+     9                                  ; Define Structure for character on screen
+    10                                  STRUC scoreStruct
+    11 00000000 <res 0000000B>          	.name	RESB 11 ; Name plus newline
+    12 0000000B <res 00000002>          	.test1	RESW 1  ; Test 1's score
+    13 0000000D <res 00000002>          	.test2	RESW 1  ; Test 2's score
+    14 0000000F <res 00000002>          	.test3	RESW 1  ; Test 3's score
+    15 00000011 <res 00000002>          	.test4	RESW 1  ; Test 4's score
+    16 00000013 <res 00000002>          	.avg	RESW 1	; Average for 4 tests
+    17 00000015 <res 00000002>          	.letter	RESB 2  ; Letter Grade plus newline
+    18                                  	.size: ;num of bytes in each struct, helps to iterage through structs
+    19                                  ENDSTRUC
+    20                                  
+    21                                  SECTION .data
+    22                                  ; Create an array of structs: formatted like the print interrupt uses.
+    23 00000000 526F62657274202020-     gradebook:	db "Robert    ",10
+    24 00000009 200A               
+    25 0000000B 32003C0046005000        		dw 50,60,70,80
+    26 00000013 0000                    		dw 0
+    27 00000015 2D0A                    		db '-',10
+    28 00000017 426F62202020202020-     		db "Bob       ",10
+    29 00000020 200A               
+    30 00000022 64005A0050004600        		dw 100,90,80,70
+    31 0000002A 0000                    		dw 0
+    32 0000002C 2D0A                    		db '-',10
+    33 0000002E 426F62627920202020-     		db "Bobby     ",10
+    34 00000037 200A               
+    35 00000039 4B005F0055004B00        		dw 75,95,85,75
+    36 00000041 0000                    		dw 0
+    37 00000043 2D0A                    		db '-',10
+    38 00000045 526F62626965202020-     		db "Robbie    ",10
+    39 0000004E 200A               
+    40 00000050 6400640064006400        		dw 100,100,100,100
+    41 00000058 0000                    		dw 0
+    42 0000005A 2D0A                    		db '-',10
+    43 0000005C 416C6C656E20202020-     		db "Allen     ",10
+    44 00000065 200A               
+    45 00000067 0A0014001E002800        		dw 10,20,30,40
+    46 0000006F 0000                    		dw 0
+    47 00000071 2D0A                    		db '-',10
+    48                                  
+    49                                  SECTION .bss
+    50                                  
+    51                                  SECTION .text
+    52                                  global _main
+    53                                  _main:
+    54                                  firstBreak:
+    55                                  ;;;;  Loop over the LEN student records
+    56                                  ;;;;  And average the four tests and
+    57                                  ;;;;  Assign a letter grade
+    58 00000000 B905000000              	mov ecx,LEN
+    59 00000005 BE[00000000]            	mov esi,gradebook   ;;; points to the array of structs
+    60                                  top:
+    61 0000000A 60                      	pusha
+    62                                  
+    63 0000000B 668B460B                	mov ax, [esi + scoreStruct.test1]
+    64 0000000F 6603460D                	add ax, [esi + scoreStruct.test2]
+    65 00000013 6603460F                	add ax, [esi + scoreStruct.test3]
+    66 00000017 66034611                	add ax, [esi + scoreStruct.test4]
+    67                                  	;;;divide sum by 4 via shifts
+    68 0000001B 66C1E802                	shr ax, 2
+    69 0000001F 66894613                	mov [esi + scoreStruct.avg], ax
+    70                                  
+    71 00000023 6683F85A                	cmp ax, 90
+    72 00000027 7C06                    	jl noA
+    73 00000029 C6461541                		mov byte[esi +scoreStruct.letter], 'A'
+    74 0000002D EB0C                    	jmp endMore
+    75                                  	noA:
+    76 0000002F 6683F850                	cmp ax, 80
+    77 00000033 7C06                    	jl noB
+    78 00000035 C6461542                		mov byte[esi+scoreStruct.letter], 'B'
+    79 00000039 EB00                    	jmp endMore
+    80                                  	noB:
+    81                                  	endMore:
+    82                                  
+    83 0000003B B804000000              	mov eax, 4
+    84 00000040 BB01000000              	mov ebx, 1
+    85 00000045 89F1                    	mov ecx, esi
+    86 00000047 BA0A000000              	mov edx, 10
+    87 0000004C CD80                    	int 80h
+    88 0000004E B804000000              	mov eax, 4
+    89 00000053 BB01000000              	mov ebx, 1
+    90 00000058 89F1                    	mov ecx, esi
+    91 0000005A 83C115                  	add ecx, scoreStruct.letter
+    92 0000005D BA02000000              	mov edx, 2
+    93 00000062 CD80                    	int 80h
+    94                                  
+    95                                  
+    96                                  
+    97                                  
+    98 00000064 61                      	popa
+    99 00000065 83C617                  	add esi,scoreStruct.size
+   100 00000068 E2A0                    	loop top
+   101                                  
+   102                                  lastBreak:
+   103                                  ; Normal termination code
+   104 0000006A B801000000              mov eax, 1
+   105 0000006F BB00000000              mov ebx, 0
+   106 00000074 CD80                    int 80h
+   107                                  ;;;;;;;;;;;;;;;;;;;;; END OF MAIN ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
