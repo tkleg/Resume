@@ -1,0 +1,9 @@
+Do you want to see a romantic movie?
+A classic movie?
+Casablanca
+Titanic
+Science Fiction?
+Star Wars
+Suspense?
+Jaws
+Citizen Kane

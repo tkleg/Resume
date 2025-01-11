@@ -1,0 +1,29 @@
+Program Description:
+  We need to program a database which will allow the user to look at data for books from an external file in the same package. The program must make objects for each book and sort them using a selection sort. They are sorted in alphabetical order of their titles. We should also be able to search for a book using its title (this should use binary search algorithms ).
+  
+  using an array of five integers, selection sort would work by using nested loops to move the smallest integer in the array to the front, then move the second smallest integer in the array to the 2nd index, and so on.
+  
+  using an array of five integers, binary search would look at the middle index. If the integer being searched for is smaller, than the algorithm looks at the integer in the middle of the first half of the array. If the integer being search for is greater than the middle integer, the algorithm looks at the integer in the middle of the second half of the array. This keeps going until either the integer being searched for is found or the algorithm runs out of indexes it can search
+  
+
+To solve the problem I plan on breaking it down into as many methods as possible to make it simpler, each method should only be doing a very specific task so that the program is easier to understand, debug, and enlarge
+
+Program Specification:
+  String are being input from external files, these strings will be used to fill data for the LibraryBook objects. These external files must be in the same package as the Library class so that they can be accessed by the Library class.
+
+Method Breakdown:
+  getFileName: this method will prompt the user to enter the name of a file for the books to come from
+  
+  getBooks: this method will fill an ArrayList with LibraryBook objects, the data for which will be found in a user input file
+  
+  printAllBooks: this method will iterate through every book in the ArrayList mentioned above and call the appropriate methods to print them
+  
+  printBook: this method prints an individual LibraryBook object which will be passed as a parameter
+  
+  printOpenerMessage: this method will print a message explaining what the program is and asking the user to input a file name for the books to come from
+  
+  printMenu: this method will print some text telling the user what to enter in order to get the program to either print all of the books, search for a particular book, or end
+  
+  sortBooks: this method will sort all of the LibraryBook objects in the above ArrayList using selection sort so they are in alphabetical order based on their titles
+  
+  searchBook: this method will search through the LibraryBook ArrayList to find a particular book which the user inputs, the method will then call the appropriate methods to print out the book's data

@@ -1,0 +1,23 @@
+Script started on Tue 25 Apr 2023 11:50:55 PM EDT
+]0;kleger_th@cobra:~/Projects/Prog4[?1034h[kleger_th@cobra Prog4]$ jac[Kvac TimeShare.java
+]0;kleger_th@cobra:~/Projects/Prog4[kleger_th@cobra Prog4]$ java TimeShare jobs1.dat
+[H[2J
+
+Job Control Analysis: Summary Report
+------------------------------------
+
+job id    arrival    start    run    wait    turnaround
+	  time       time     time   time    time
+------    -------    -----    ----   ----    ----------
+
+job1	    1		1	3	0	3
+job2	    2		4	2	2	4
+job3	    10		10	5	0	5
+
+ Average Wait Time => 0.67
+         CPU Usage => 10.00
+          CPU Idle => 4.00
+     CPU Usage (%) => 71.43%
+]0;kleger_th@cobra:~/Projects/Prog4[kleger_th@cobra Prog4]$ ec[K[Kexit
+
+Script done on Tue 25 Apr 2023 11:51:26 PM EDT

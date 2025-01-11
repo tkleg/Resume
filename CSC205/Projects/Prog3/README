@@ -1,0 +1,42 @@
+Employee Class abstract
+  instance variables
+      double: hourly wage
+      string: name
+  static methods
+    getters and setters for both instance variables
+    method to increase hourly wage by a percentage ( void returning, double parameter)
+  abstract methods
+    computePay ( gives the weekly pay for an employee based on the number of hours worked, which is given as a parameter ( determine if this will be double or int ))  
+    
+HourlyEmployee Class
+  inherits Employee class
+  implements serializable
+  constructor
+    take name and hourly wage as parameters
+  instance methods
+    computePay ( abstract inherited from Employee class )
+      multiplies the first 40 hours ir less by the hourly wage, hours beyond 40 are paid 1.5x hourly wage
+    toString ( see Lab pdf for how to do this )( entire string should be 40 characters )
+    
+  SalariedEmployee class
+    inherits Employee class
+    implements serializable
+    constructor
+      take name and annual salary as parameter
+        use hourly salary = annual salary / ( 52*40 ) 
+    instance methods
+      getter and setter for annual salary
+        setter should use the formula above for hourly salary for an salaried employee
+      computePay
+        returns the annual salary / 52
+      toString
+        returns a string representation of the SalaridEmployee ( reference the pdf for Lab for instructions )
+    
+Personnel Program
+  method that displays the menu
+  method the takes the command entered and callc the appropriate methods
+  methods for each command in the command menu
+( new employee, compute paychecks, raise wages, print records, download data, upload data, quit ) ( quit won't need a method, just print a goodbye message, then call System.exit(1) )
+
+
+Note: all descriptions are from the orginal plan, always possible that the implementation of a method or class may be different than how it is described in this file
