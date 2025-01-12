@@ -1,0 +1,179 @@
+     1                                  ; Bob Allen
+     2                                  ; Printing colors
+     3                                  ; Fall 2023
+     4                                  
+     5                                  SECTION .data
+     6                                  ; Clear Screen control characters 
+     7 00000000 1B5B324A                cls	db	1bh, '[2J' 
+     8 00000004 04000000                clsLen	dd $-cls
+     9                                  
+    10                                  ; Reset console colors
+    11 00000008 1B5B306D                reset 	db	1bh,'[0m'
+    12 0000000C 04000000                resetLen dd $-reset
+    13                                  
+    14                                  ; Set cursor position control characters
+    15 00000010 1B5B                    pos1	db	1bh, '[' 
+    16 00000012 3035                    row	db	'05'
+    17 00000014 3B                      	db	';'
+    18 00000015 3035                    col	db	'05'
+    19 00000017 48                      	db	'H'
+    20                                  
+    21                                  ; Set cursor position control characters
+    22 00000018 1B5B                    pos2	db	1bh, '[' 
+    23 0000001A 3130                    	db	'10'
+    24 0000001C 3B                      	db	';'
+    25 0000001D 3130                    	db	'10'
+    26 0000001F 48                      	db	'H'
+    27                                  
+    28                                  ; Set cursor position control characters
+    29 00000020 1B5B                    pos3	db	1bh, '[' 
+    30 00000022 3135                    	db	'15'
+    31 00000024 3B                      	db	';'
+    32 00000025 3135                    	db	'15'
+    33 00000027 48                      	db	'H'
+    34                                  
+    35                                  ; Set cursor position control characters
+    36 00000028 1B5B                    pos4	db	1bh, '[' 
+    37 0000002A 3230                    	db	'20'
+    38 0000002C 3B                      	db	';'
+    39 0000002D 3230                    	db	'20'
+    40 0000002F 48                      	db	'H'
+    41                                  
+    42                                  ; Set cursor position control characters
+    43 00000030 1B5B                    pos5	db	1bh, '[' 
+    44 00000032 3235                    	db	'25'
+    45 00000034 3B                      	db	';'
+    46 00000035 3235                    	db	'25'
+    47 00000037 48                      	db	'H'
+    48                                  
+    49                                  ; Some messages with their lengths
+    50 00000038 4E6F20536861766520-     msg1    db "No Shave November."
+    51 00000041 4E6F76656D6265722E 
+    52 0000004A 12000000                msg1Len dd $-msg1
+    53 0000004E 456174204368696C69-     msg2    db "Eat Chili!!."
+    54 00000057 21212E             
+    55 0000005A 0C000000                msg2Len dd $-msg2
+    56 0000005E 476F204D6572636572-     msg3    db "Go Mercer Bears!!!!!!!"
+    57 00000067 204265617273212121-
+    58 00000070 21212121           
+    59 00000074 16000000                msg3Len dd $-msg3
+    60 00000078 547269636B206F7220-     msg4    db "Trick or Treat?"
+    61 00000081 54726561743F       
+    62 00000087 0F000000                msg4Len dd $-msg4
+    63                                  
+    64                                  ; Color sequences ** NOTE:  all color sequences have a length of 5
+    65 0000008B 05000000                colorLen: dd 5
+    66                                  
+    67 0000008F 1B5B33306D              black:	db 1bh, "[30m"  ;;; black foreground
+    68 00000094 1B5B33316D              red:	db 1bh, "[31m"  ;;; red foreground
+    69 00000099 1B5B33326D              green:	db 1bh, "[32m" 	;;; green foreground
+    70 0000009E 1B5B33336D              yellow:	db 1bh, "[33m" 	;;; yellow foreground
+    71 000000A3 1B5B33346D              blue:	db 1bh, "[34m" 	;;; blue foreground
+    72 000000A8 1B5B33356D              magenta:db 1bh, "[35m" 	;;; magenta foreground
+    73 000000AD 1B5B33366D              cyan:	db 1bh, "[36m" 	;;; cyan foreground
+    74 000000B2 1B5B33376D              white:	db 1bh, "[37m" 	;;; white foreground
+    75                                  
+    76                                  
+    77                                  SECTION .text
+    78                                  global _main
+    79                                  _main:
+    80                                  
+    81                                  ;;;;;  Print Clear the screen
+    82 00000000 B804000000              	mov	eax,4
+    83 00000005 BB01000000              	mov	ebx,1
+    84 0000000A B9[00000000]            	mov 	ecx,cls
+    85 0000000F 8B15[04000000]          	mov	edx,[clsLen]
+    86 00000015 CD80                    	int 	80h
+    87                                  
+    88                                  ;;;;;  Set the cursor to position 1
+    89 00000017 B804000000              	mov	eax,4
+    90 0000001C BB01000000              	mov	ebx,1
+    91 00000021 B9[10000000]            	mov	ecx,pos1
+    92 00000026 BA08000000              	mov	edx,8
+    93 0000002B CD80                    	int	80h
+    94                                  
+    95                                  ;;;   set color to red
+    96 0000002D B804000000              	mov	eax,4
+    97 00000032 BB01000000              	mov	ebx,1
+    98 00000037 B9[94000000]            	mov 	ecx,red
+    99 0000003C 8B15[8B000000]          	mov	edx,[colorLen]
+   100 00000042 CD80                    	int	80h
+   101                                  
+   102                                  ;;;; 	print first message
+   103 00000044 B804000000              	mov	eax,4
+   104 00000049 BB01000000              	mov	ebx,1
+   105 0000004E B9[38000000]            	mov 	ecx,msg1
+   106 00000053 8B15[4A000000]          	mov	edx,[msg1Len]
+   107 00000059 CD80                    	int 	80h
+   108                                  
+   109                                  
+   110                                  ;;;;;  Set the cursor to position 2
+   111 0000005B B804000000              	mov	eax,4
+   112 00000060 BB01000000              	mov	ebx,1
+   113 00000065 B9[18000000]            	mov	ecx,pos2
+   114 0000006A BA08000000              	mov	edx,8
+   115 0000006F CD80                    	int	80h
+   116                                  
+   117                                  ;;;   set color to blue
+   118 00000071 B804000000              	mov	eax,4
+   119 00000076 BB01000000              	mov	ebx,1
+   120 0000007B B9[A3000000]            	mov 	ecx,blue
+   121 00000080 8B15[8B000000]          	mov	edx,[colorLen]
+   122 00000086 CD80                    	int	80h
+   123                                  
+   124                                  ;;;; 	print second message
+   125 00000088 B804000000              	mov	eax,4
+   126 0000008D BB01000000              	mov	ebx,1
+   127 00000092 B9[4E000000]            	mov 	ecx,msg2
+   128 00000097 8B15[5A000000]          	mov	edx,[msg2Len]
+   129 0000009D CD80                    	int 	80h
+   130                                  
+   131                                  ;;;   set color to green
+   132 0000009F B804000000              	mov	eax,4
+   133 000000A4 BB01000000              	mov	ebx,1
+   134 000000A9 B9[99000000]            	mov 	ecx,green
+   135 000000AE 8B15[8B000000]          	mov	edx,[colorLen]
+   136 000000B4 CD80                    	int	80h
+   137                                  
+   138                                  
+   139                                  ;;;;;  Set the cursor to position 3
+   140 000000B6 B804000000              	mov	eax,4
+   141 000000BB BB01000000              	mov	ebx,1
+   142 000000C0 B9[20000000]            	mov	ecx,pos3
+   143 000000C5 BA08000000              	mov	edx,8
+   144 000000CA CD80                    	int	80h
+   145                                  
+   146                                  ;;;; 	print third  message
+   147 000000CC B804000000              	mov	eax,4
+   148 000000D1 BB01000000              	mov	ebx,1
+   149 000000D6 B9[5E000000]            	mov 	ecx,msg3
+   150 000000DB 8B15[74000000]          	mov	edx,[msg3Len]
+   151 000000E1 CD80                    	int 	80h
+   152                                  
+   153                                  ;;;   set color to magenta
+   154 000000E3 B804000000              	mov	eax,4
+   155 000000E8 BB01000000              	mov	ebx,1
+   156 000000ED B9[A8000000]            	mov 	ecx,magenta
+   157 000000F2 8B15[8B000000]          	mov	edx,[colorLen]
+   158 000000F8 CD80                    	int	80h
+   159                                  
+   160                                  
+   161                                  ;;;;;  Set the cursor to position 4
+   162 000000FA B804000000              	mov	eax,4
+   163 000000FF BB01000000              	mov	ebx,1
+   164 00000104 B9[28000000]            	mov	ecx,pos4
+   165 00000109 BA08000000              	mov	edx,8
+   166 0000010E CD80                    	int	80h
+   167                                  
+   168                                  ;;;; 	print fourth  message
+   169 00000110 B804000000              	mov	eax,4
+   170 00000115 BB01000000              	mov	ebx,1
+   171 0000011A B9[78000000]            	mov 	ecx,msg4
+   172 0000011F 8B15[87000000]          	mov	edx,[msg4Len]
+   173 00000125 CD80                    	int 	80h
+   174                                  
+   175                                  
+   176                                  ; Normal termination code
+   177 00000127 B801000000              	mov eax, 1
+   178 0000012C BB00000000              	mov ebx, 0
+   179 00000131 CD80                    	int 80h

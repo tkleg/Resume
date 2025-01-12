@@ -1,0 +1,361 @@
+Script started on Tue 12 Dec 2023 12:13:15 PM EST
+]0;kleger_th@cobra:~/CSC245/Projects/Prog4[?1034h[kleger_th@cobra Prog4]$ exit./RELEASE ginfile1.datc++ -o RELEASE dijkstra.cpp [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[K./RELEASE ginfile3.datexit[Kc++ -o RELEASE dijkstra.cpp 
+]0;kleger_th@cobra:~/CSC245/Projects/Prog4[kleger_th@cobra Prog4]$ c++ -o RELEASE dijkstra.cpp [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[K./RELEASE ginfile1.datc++ -o RELEASE dijkstra.cpp [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cexit[K./RELEASE ginfile3.datclear[K./RELEASE ginfile3.dat[14Pcd Prog4jects[2PCSC245Projects[3Pg4./RELEASE ginfile3.datclear[K./RELEASE ginfile3.datexit[Kc++ -o RELEASE dijkstra.cpp [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[6P./RELEASE ginfile1.datexit[K./RELEASE ginfile1.dat
+[2J[1;1H		^^^^^^^^^^^^^^^^    DIJKSTRA'S ALGORITHM    ^^^^^^^^^^^^^^^^
+
+		A Weighted Graph Has Been Built For These 7 Cities : 
+
+		           Atlanta            Austin           Chicago
+		            Dallas            Denver           Houston
+		        Washington
+
+		Please input your starting vertex : Atlanta
+
+		----------------------------------------------------------------
+                      Vertex                Distance                Previous
+
+                     Atlanta                       0                     N/A
+                  Washington                     600                 Atlanta
+                     Houston                     800                 Atlanta
+                      Dallas                    1900              Washington
+                      Austin                    2100                  Dallas
+                      Denver                    2680                  Dallas
+                     Chicago                    2800                  Dallas
+
+		----------------------------------------------------------------
+
+		^^^^^^^^^^^^^^^^    PRIM'S ALGORITHM    ^^^^^^^^^^^^^^^^		
+		----------------------------------------------------------------
+                      Vertex                Distance                Previous
+
+                     Atlanta                       0                     N/A
+                      Austin                     200                  Dallas
+                  Washington                     600                 Atlanta
+                      Denver                     780                  Dallas
+                     Houston                     800                 Atlanta
+                     Chicago                     900                  Dallas
+                      Dallas                    1300              Washington
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #1 is :
+                            Vertex                                  To
+                          Atlanta                ->               Houston
+                          Houston                ->               Atlanta
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #2 is :
+                            Vertex                                  To
+                          Atlanta                ->            Washington
+                       Washington                ->               Atlanta
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #3 is :
+                            Vertex                                  To
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->                Austin
+                           Austin                ->               Houston
+                          Houston                ->               Atlanta
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #4 is :
+                            Vertex                                  To
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->               Chicago
+                          Chicago                ->                Denver
+                           Denver                ->               Atlanta
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #5 is :
+                            Vertex                                  To
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->                Denver
+                           Denver                ->               Atlanta
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #6 is :
+                            Vertex                                  To
+                           Austin                ->                Dallas
+                           Dallas                ->                Austin
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #7 is :
+                            Vertex                                  To
+                           Austin                ->               Houston
+                          Houston                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->                Austin
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #8 is :
+                            Vertex                                  To
+                          Chicago                ->                Denver
+                           Denver                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->               Chicago
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #9 is :
+                            Vertex                                  To
+                          Chicago                ->                Denver
+                           Denver                ->               Chicago
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #10 is :
+                            Vertex                                  To
+                           Dallas                ->                Austin
+                           Austin                ->                Dallas
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #11 is :
+                            Vertex                                  To
+                           Dallas                ->                Austin
+                           Austin                ->               Houston
+                          Houston                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #12 is :
+                            Vertex                                  To
+                           Dallas                ->               Chicago
+                          Chicago                ->                Denver
+                           Denver                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #13 is :
+                            Vertex                                  To
+                           Dallas                ->                Denver
+                           Denver                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #14 is :
+                            Vertex                                  To
+                           Denver                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->               Chicago
+                          Chicago                ->                Denver
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #15 is :
+                            Vertex                                  To
+                           Denver                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->                Denver
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #16 is :
+                            Vertex                                  To
+                           Denver                ->               Chicago
+                          Chicago                ->                Denver
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #17 is :
+                            Vertex                                  To
+                          Houston                ->               Atlanta
+                          Atlanta                ->               Houston
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #18 is :
+                            Vertex                                  To
+                          Houston                ->               Atlanta
+                          Atlanta                ->            Washington
+                       Washington                ->                Dallas
+                           Dallas                ->                Austin
+                           Austin                ->               Houston
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #19 is :
+                            Vertex                                  To
+                       Washington                ->               Atlanta
+                          Atlanta                ->            Washington
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #20 is :
+                            Vertex                                  To
+                       Washington                ->                Dallas
+                           Dallas                ->                Austin
+                           Austin                ->               Houston
+                          Houston                ->               Atlanta
+                          Atlanta                ->            Washington
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #21 is :
+                            Vertex                                  To
+                       Washington                ->                Dallas
+                           Dallas                ->               Chicago
+                          Chicago                ->                Denver
+                           Denver                ->               Atlanta
+                          Atlanta                ->            Washington
+
+		----------------------------------------------------------------
+                                  The graph contains 22 cycles
+
+                    Cycle #22 is :
+                            Vertex                                  To
+                       Washington                ->                Dallas
+                           Dallas                ->                Denver
+                           Denver                ->               Atlanta
+                          Atlanta                ->            Washington
+
+		----------------------------------------------------------------
+]0;kleger_th@cobra:~/CSC245/Projects/Prog4[kleger_th@cobra Prog4]$ ./RELEASE ginfile2.dat
+[2J[1;1H		^^^^^^^^^^^^^^^^    DIJKSTRA'S ALGORITHM    ^^^^^^^^^^^^^^^^
+
+		A Weighted Graph Has Been Built For These 7 Cities : 
+
+		                V1                V2                V3
+		                V4                V5                V6
+		                V7
+
+		Please input your starting vertex : V1
+
+		----------------------------------------------------------------
+                      Vertex                Distance                Previous
+
+                          V1                       0                     N/A
+                          V4                       1                      V1
+                          V2                       2                      V1
+                          V3                       3                      V4
+                          V5                       3                      V4
+                          V7                       5                      V4
+                          V6                       6                      V7
+
+		----------------------------------------------------------------
+
+		^^^^^^^^^^^^^^^^    PRIM'S ALGORITHM    ^^^^^^^^^^^^^^^^		
+		----------------------------------------------------------------
+                      Vertex                Distance                Previous
+
+                          V1                       0                     N/A
+                          V4                       1                      V1
+                          V6                       1                      V7
+                          V2                       2                      V1
+                          V5                       2                      V4
+                          V3                       2                      V4
+                          V7                       4                      V4
+
+		----------------------------------------------------------------
+                                  The graph contains 7 cycles
+
+                    Cycle #1 is :
+                            Vertex                                  To
+                               V1                ->                    V2
+                               V2                ->                    V4
+                               V4                ->                    V3
+                               V3                ->                    V1
+
+		----------------------------------------------------------------
+                                  The graph contains 7 cycles
+
+                    Cycle #2 is :
+                            Vertex                                  To
+                               V1                ->                    V4
+                               V4                ->                    V3
+                               V3                ->                    V1
+
+		----------------------------------------------------------------
+                                  The graph contains 7 cycles
+
+                    Cycle #3 is :
+                            Vertex                                  To
+                               V2                ->                    V4
+                               V4                ->                    V3
+                               V3                ->                    V1
+                               V1                ->                    V2
+
+		----------------------------------------------------------------
+                                  The graph contains 7 cycles
+
+                    Cycle #4 is :
+                            Vertex                                  To
+                               V3                ->                    V1
+                               V1                ->                    V2
+                               V2                ->                    V4
+                               V4                ->                    V3
+
+		----------------------------------------------------------------
+                                  The graph contains 7 cycles
+
+                    Cycle #5 is :
+                            Vertex                                  To
+                               V3                ->                    V1
+                               V1                ->                    V4
+                               V4                ->                    V3
+
+		----------------------------------------------------------------
+                                  The graph contains 7 cycles
+
+                    Cycle #6 is :
+                            Vertex                                  To
+                               V4                ->                    V3
+                               V3                ->                    V1
+                               V1                ->                    V2
+                               V2                ->                    V4
+
+		----------------------------------------------------------------
+                                  The graph contains 7 cycles
+
+                    Cycle #7 is :
+                            Vertex                                  To
+                               V4                ->                    V3
+                               V3                ->                    V1
+                               V1                ->                    V4
+
+		----------------------------------------------------------------
+]0;kleger_th@cobra:~/CSC245/Projects/Prog4[kleger_th@cobra Prog4]$ [K[kleger_th@cobra Prog4]$ cleaqr[K[K[K[K[K[Kexit
+exit
+
+Script done on Tue 12 Dec 2023 12:13:42 PM EST

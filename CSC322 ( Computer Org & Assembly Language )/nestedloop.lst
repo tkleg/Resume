@@ -1,0 +1,44 @@
+     1                                  ; Bob Allen
+     2                                  ; Fall 2023
+     3                                  ; Playing with nested loops
+     4                                  ;   A loop going N times inside a loop going M times
+     5                                  ;   executes the inner loop code M*N times.
+     6                                  ;   So, we can 'multiply' M*N by just incrementing 
+     7                                  ;   a variable inside the nested loops.
+     8                                  
+     9                                  M EQU 20
+    10                                  N EQU 7
+    11                                  
+    12                                  SECTION .data
+    13                                  ; define data/variables here.  Think DB, DW, DD, DQ
+    14                                  
+    15                                  SECTION .bss
+    16                                  ; define uninitialized data here
+    17 00000000 <res 00000004>          saveECX:	RESD 1
+    18 00000004 <res 00000002>          product:	RESW 1
+    19                                  
+    20                                  SECTION .text
+    21                                  global _main
+    22                                  _main:
+    23                                  
+    24                                  ;;;;  'multiply' M times N through nested loop and increment
+    25 00000000 6631C0                  	xor ax,ax	;; hold product in ax
+    26 00000003 B914000000              	mov ecx,M	;; Outer loop counter is M
+    27                                  outer:
+    28 00000008 890D[00000000]          	mov [saveECX],ecx  ;; save outer loop counter
+    29 0000000E B907000000              	mov ecx,N	   ;; Inner loop counter is N
+    30                                  inner:
+    31 00000013 6640                    	inc ax		;; This line gets executed M*N times
+    32 00000015 E2FC                    	loop inner
+    33                                  
+    34 00000017 8B0D[00000000]          	mov ecx,[saveECX]	;; restore the outer loop count
+    35 0000001D E2E9                    	loop outer
+    36                                  
+    37 0000001F 66A3[04000000]          	mov [product],ax	;; save the product
+    38                                  
+    39                                  lastBreak:
+    40                                  
+    41                                  ; Normal termination code
+    42 00000025 B801000000              mov eax, 1
+    43 0000002A BB00000000              mov ebx, 0
+    44 0000002F CD80                    int 80h

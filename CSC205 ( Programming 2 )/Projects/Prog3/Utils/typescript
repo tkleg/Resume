@@ -1,0 +1,365 @@
+Script started on Mon 10 Apr 2023 05:37:46 PM EDT
+]0;kleger_th@cobra:~/Projects/Prog3/Utils[?1034h[kleger_th@cobra Utils]$ java Per[K[K[Kjava Per[K[K[K[K[K[K[K[K[Kv[Kc P[K[K[K[K[K[K[KPersonnel, [K[K.java, Employee.java, SalariedEmployee.java,  HourlyEmployee.java[K[A[kleger_th@cobra Utils]$ Personnel.java, Employee.java, SalariedEmployee.java, HoourlyEmployee.java
+bash: Personnel.java,: command not found...
+]0;kleger_th@cobra:~/Projects/Prog3/Utils[kleger_th@cobra Utils]$ javac Personnel.java
+]0;kleger_th@cobra:~/Projects/Prog3/Utils[kleger_th@cobra Utils]$ java Personnel
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: n
+Enter the name of new employee: swanson, oj  joe
+Hourly (h) or salaried (s): s
+Enter annual salary: 500000
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: n
+Enter the name of new employee: griffin, peter
+Hourly (h) or salaried (s): s
+Enter annual salary: 30000
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: b n
+Enter the name of new employee: brown, clevelean   and
+Hourly (h) or salaried (s): s
+Enter annual salary: 34000
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: n
+Enter the name of new employee: quagmre  ire, glenn
+Hourly (h) or salaried (s): s h
+Enter hourly wage: 50
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: n
+Enter the name of new employee: girff    riffin, lois
+Hourly (h) or salaried (s): h
+Enter hourly wage: 40.67
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: p
+Employees Records
+-----------------
+swanson, joe             $500000.00/year
+griffin, peter            $30000.00/year
+brown, cleveland          $34000.00/year
+quagmire, glenn              $50.00/hour
+griffin, lois                $40.67/hour
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: f
+Employees Records
+-----------------
+swanson, joe             $500000.00/year
+griffin, peter            $30000.00/year
+brown, cleveland          $34000.00/year
+quagmire, glenn              $50.00/hour
+griffin, lois                $40.67/hour
+
+Enter the name of the employee you wish to fire. Enter nothing and hit enter if you wish to return.
+swanson, joe
+swanson, joe has been fired.
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: c
+Enter the number of hours worked by griffin, peter: 40
+Pay: $576.92
+Enter the number of hours worked by brown, cleveland: 40
+Pay: $653.85
+Enter the number of hours worked by quagmire, glenn: 40
+Pay: $2000.00
+Enter the number of hours worked by griffin, lois: 40
+Pay: $1626.80
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: r
+Enter the percentage increase: 15
+
+New Wages
+---------
+griffin, peter            $34500.00/year
+brown, cleveland          $39100.00/year
+quagmire, glenn              $57.50/hour
+griffin, lois                $46.77/hour
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: p
+Employees Records
+-----------------
+griffin, peter            $34500.00/year
+brown, cleveland          $39100.00/year
+quagmire, glenn              $57.50/hour
+griffin, lois                $46.77/hour
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: d
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: z
+
+Are you sure you want to delete the database data? This is irreversible. Enter just "yes" if so: yes
+
+Database data successfuflly deleted.
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: p
+
+There are no workers in the database so there are no employee records.
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: u
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: p
+Employees Records
+-----------------
+griffin, peter            $34500.00/year
+brown, cleveland          $39100.00/year
+quagmire, glenn              $57.50/hour
+griffin, lois                $46.77/hour
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: x
+
+Are you sure you want to delete the downloaded data? This is irreversible. Enter "yes" if so: yes
+
+Downloaded data successfuflly deleted.
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: u
+
+The downloaded employee database does not exist or cannot be accessed.
+The file is named "employee.dat".
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: q
+
+Would you like to download all current data to the computer so the information is not lost.
+If so, type "yes", if you would like to not download the data type "no".
+If you would like to not exit the program, type "cancel".
+
+cancel
+
+Program termination cancelled. Returning to database.
+
+----------------------------------
+|Commands: n - New employee      |
+|          f - Fire employee     |
+|          c - Compute paychecks |
+|          r - Raise wages       |
+|          p - Print records     |
+|          d - Download data     |
+|          u - Upload data       |
+|          x - Delete downloads  |
+|          z - Clear database    |
+|          q - Quit              |
+----------------------------------
+Enter commands: q
+
+Would you like to download all current data to the computer so the information is not lost.
+If so, type "yes", if you would like to not download the data type "no".
+If you would like to not exit the program, type "cancel".
+
+no
+
+Have a nice day
+]0;kleger_th@cobra:~/Projects/Prog3/Utils[kleger_th@cobra Utils]$ java Personnel[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexit
+exit
+
+Script done on Mon 10 Apr 2023 05:41:21 PM EDT

@@ -1,0 +1,47 @@
+# Instructions for Running Program in Various Languages
+## Note: the start and end bounds can be entered in any order
+
+- Loop Python
+    - run `cd PythonLoop`
+    - run `python3 loop.py *start end*`
+- Recursive Python
+    - run `cd PythonRecursion`
+    - run `python3 recur.py *start end*`
+- Loop Rust
+    - run `cd RustLoop/src`
+    - run `cargo build --release`
+    - run `cd ../target/release`
+    - run `./RustLoop *start end*`
+- Recursive Rust
+    - run `cd RustRecur/src`
+    - run `cargo build --release`
+    - run `cd ../target/release`
+    - run `./RustLoop *start end*`
+- Loop Fortran
+    - run `cd FortranLoop`
+    - run `gfortran loop.f08`
+    - run `./a.out *start end*`
+- Recursive Fortran
+    - run `cd FortranRecur`
+    - run `gfortran recur.f08`
+    - run `./a.out *start end*`
+- Loop Julia
+    - run `cd JuliaLoop`
+    - run `julia loop.jl *start end*`
+- Recursive Julia
+    - run `cd JuliaRecur`
+    - run `julia recur.jl *start end*`
+- Loop Lisp
+    - run `cd LispLoop`
+    - run `sbcl --script *start end*`
+- Recursive Lisp
+    - run `cd LispRecur`
+    - run `sbcl --script *start end*`
+- Loop C#
+    - run `cd C#Loop`
+    - run `mcs csLoop.cs`
+    - run `mono csLoop.exe *start end*`
+- Recursive C#
+    - run `cs C#Recur`
+    - run `mcs csRecur.cs`
+    - run `mono csLoop.exe *start end*`
