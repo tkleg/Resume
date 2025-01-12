@@ -18,3 +18,6 @@ precedence, recursion, and input/output facilities. Examples will be drawn from 
 - This took much less time than the Five Card Stud Project but still took a considerable amount of hours to complete
 - For the class final we had to use this code and modify it so that it would find the highest number computed when starting the conjecture at any number in a given range
     - Unfortunately this code was in a repo controlled by the teacher which has since been deleted so I could not include it here
+
+### Team Fice Card Stud
+- This was based off the solo Five Card Stud projects, the only difference being was that jokers were included, we ran statistics for a large number of hands, and we had to include command line flags for things such as the statistics
