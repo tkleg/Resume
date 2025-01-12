@@ -31,3 +31,8 @@ Currently looking to gain experience that will assist be in attaining a full-tim
 - Ivanti Neurons ITSM Workflows
     - I am using this tool in my current internship with the Mercer University IT Department
     - So far I have learned how to make Request Offerings and edit/create workflows
+
+## Other Non-Programming Knowledge and Experience
+- I have taken coursework in Computer Organization ( unsigned ints, signed ints, IEEE floating point format, RAM layout, logic design, etc. )
+- Through my classes I am learning plenty about various algorithms and techniques for writing programs
+- I am a part of the Binary Bears ( Mercer's Competitive Programming Team ) and have thus far taken part in two seperate competitions between colleges in the South-Eastern United States.
