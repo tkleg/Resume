@@ -31,3 +31,4 @@ Currently looking to gain experience that will assist be in attaining a full-tim
     - During my internship with Jazz Pharmaceuticals I learned how to use PowerAutomate to automate business processes. I did this by creating a workflow to handle a large part of the onboarding process for team members.
 - Ivanti Neurons ITSM Workflows
     - I am using this tool in my current internship with the Mercer University IT Department
+    - So far I have learned how to make Request Offerings and edit/create workflows

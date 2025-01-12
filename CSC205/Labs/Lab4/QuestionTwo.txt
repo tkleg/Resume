@@ -1,7 +1,0 @@
-a) size is how many elements the ArrayList currently holds. Capacity is how many spots are set aside in memory for the ArrayList to hold elements
-
-b) the max value of an integer
-
-c) ArrayLists can be scaled in size easily and values can be inserted and removed from specific indexes easily
-
-d) Arrays are easier to access information from and the declaration statements are more simple

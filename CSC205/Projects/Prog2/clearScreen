@@ -1,4 +1,0 @@
-    private static void clearScreen()
-    {
-        System.out.println("\u001b[H\u001b[2J");
-    }
