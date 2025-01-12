@@ -19,8 +19,7 @@ Currently looking to gain experience that will assist be in attaining a full-tim
     - My entire CSC322 (Computer Org & Assembly Language) class was in this language
     - Biggest project was a snake game
     - While I am rusty in this language I still do posess a basic understanding of most of the language and would have no trouble picking it back up if a job or assignment required it.
-    - Examples can be seen in the following directory
-        - **CSC322**
+    - The repo for this class was unfortunately wiped due to the Gitlab account being remade when used for another class so the code has unfortunately been lost
 -   Other Languages
     - In the **CSC330/FiveCardStud** and **CSC330/CollatzConjecture** directories you will notice a large amount of languages
         - These languages ( with the exception of Java and C++ ) I have not used elsewhere
