@@ -27,7 +27,7 @@ Currently looking to gain experience that will assist be in attaining a full-tim
     - Bash & C
         - In my **CSC460** (Operating Systems) class I am using bash and will soon use some C as well. Please note that this class is ongoing and projects will be uploaded to the folder as I complete more projects. This class is my first experience with bash as well as C.
     - Dart and YAML workflows
-        - In my **CSC325** ( Application Development and Deployment ) class I made an app within a Docker dev container using Dart. If you follow the instructions on the README at the repo [HERE](https://github.com/tkleg/CSC325Pipeline/settings) you can get the app running yourself. I have uploaded the code of the repo this repo as well. It can be found in the 
+        - In my **CSC325** ( Application Development and Deployment ) class I made an app within a Docker dev container using Dart. If you follow the instructions on the README at the repo [HERE](https://github.com/tkleg/CSC325Pipeline) you can get the app running yourself. I have uploaded the code of the repo this repo as well. It can be found in the 
 
 ## Automation Skills
 - PowerAutomate
