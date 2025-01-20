@@ -1,0 +1,84 @@
+#!/bin/bash
+
+function formatToWOutputFromUserID(){
+	userID="$1"
+	#maximize the userID to 8 chars since w command cuts off the userID after that and thus a longer userID would not return a result
+         if [ ${#userID} -gt 8 ]; then
+         	cutUserID="${userID:0:8}"
+         else
+         	cutUserID="$userID"
+         fi
+        	wResult=$( w | grep "$cutUserID" | tr -s " " )
+		foundUser=$( echo "$wResult" | cut -d " " -f1 )
+	#for some reason w command above kept returning my userID so I used this if statement to check if it found the right user
+         if [[ "$cutUserID" == "$foundUser" ]]; then
+                #userID may be cut short here if too long. This cut gets all parts after the first. We replace the cutID with the full ID
+                wResult=$( echo "$wResult" | cut -d " " -f2- )
+                wResult="$userID $wResult"
+                wFormatUsers+=("$wResult")
+        else
+        	#forces the format to be same as w command output
+		wFormatUsers+=("$userID notOn a a a a a -")
+	fi
+}
+
+function printUsers() {
+	usersToPrint=("$@")
+	for line in "${usersToPrint[@]}"; do
+                userID=$( echo "$line" | cut -d " " -f1 )
+                commentField=$( grep "$userID" /etc/passwd | cut -d ":" -f5 )
+                name=$( echo "$commentField" | cut -d "," -f1 )
+                homePhone=$( echo "$commentField" | cut -d "," -f4 )
+                tty=$( echo "$line" | cut -d " " -f2 )
+		#we did not set this in the function above because it would throw off indexing for the cut command
+		if [[ "$tty" == "notOn" ]]; then
+			tty="NOT ON"
+		fi
+                whatP1=$( echo "$line" | cut -d " " -f8 )
+                whatP2=$( echo "$line" | cut -d " " -f9 )
+                what="$whatP1 $whatP2"
+                #maximize the what field at 15 chars long
+                if [ ${#what} -gt 15 ]; then
+                        what="${what:0:15}"
+                fi
+		#genuinly so glad this exists in bash, was not expecting it to at first
+                printf "%-16s%-24s%-16s%-8s%-14s\n" "$userID" "$name" "$homePhone" "$tty" "$what"
+        done
+}
+
+echo "  USERID               NAME                  PHONE       TTY       WHAT"
+if [ $# -eq 0 ]; then
+        # gets all lines from w command output starting from third line (first user)
+	#ifs allows the command to split the results into an array properly
+        old_ifs=$IFS
+        IFS=$'\n'
+        loggedUsers=( $( w | tail -n +3 | tr -s " " ) )
+        IFS=$old_ifs
+        printUsers "${loggedUsers[@]}"
+elif [ $1 = "all" ]; then
+	old_ifs=$IFS
+        IFS=$'\n'
+        allUsers=( $( cat /etc/passwd ) )
+        IFS=$old_ifs
+	classUsers=()
+	for line in "${allUsers[@]}"; do
+		comment=$( echo $line | cut -d ":" -f5 | cut -d "," -f2 )
+		#comment must start with "BASHINGBEAR"
+		if [[ $comment == BASHINGBEAR* ]]; then
+			classUsers+=("$line")
+		fi
+	done
+	wFormatUsers=()
+	for line in "${classUsers[@]}"; do
+		userID=$(echo "$line" | cut -d ":" -f1)
+		formatToWOutputFromUserID "$userID"		
+	done 
+	printUsers "${wFormatUsers[@]}"
+else
+	commandLineArgs=("$@")
+	wFormatUsers=()
+	for line in "${commandLineArgs[@]}"; do
+		formatToWOutputFromUserID "$line"
+	done
+        printUsers "${wFormatUsers[@]}"
+fi
