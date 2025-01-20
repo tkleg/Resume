@@ -1,0 +1,43 @@
+name: Main Pipeline
+
+# triggers on any push to the branch when any file other than a markdown file or txt is changed
+on:
+  push:
+    branches: ["main"]
+    paths-ignore: ["**.md", "**.txt"]
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+  
+      - name: install app dependencies
+        working-directory: ./app
+        run: flutter pub get
+
+      - name: Set up lcov
+        run: |
+          sudo apt-get update -qq -y
+          sudo apt-get install lcov -y
+
+      - name: Run tests with code coverage
+        working-directory: ./app
+        run: flutter test --coverage
+      - name: Report code coverage
+        uses: fjlopezs/lcov-reporter-action@v1.0.0
+        with:
+          lcov-file: ./app/coverage/lcov.info
+
+      - name: Build flutter web
+        working-directory: ./app
+        run: flutter build web
+     
+      - name: Web Deploy - GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./app/build/web/

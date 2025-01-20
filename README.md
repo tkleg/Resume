@@ -26,6 +26,8 @@ Currently looking to gain experience that will assist be in attaining a full-tim
         - However, due to the size of the projects and the time required on each language, I have become comfortable with coding in each.
     - Bash & C
         - In my **CSC460** (Operating Systems) class I am using bash and will soon use some C as well. Please note that this class is ongoing and projects will be uploaded to the folder as I complete more projects. This class is my first experience with bash as well as C.
+    - Dart and YAML workflows
+        - In my **CSC325** ( Application Development and Deployment ) class I made an app within a Docker dev container using Dart. If you follow the instructions on the README at the repo [HERE](https://github.com/tkleg/CSC325Pipeline/settings) you can get the app running yourself. I have uploaded the code of the repo this repo as well. It can be found in the 
 
 ## Automation Skills
 - PowerAutomate
@@ -33,9 +35,10 @@ Currently looking to gain experience that will assist be in attaining a full-tim
 - Ivanti Neurons ITSM Workflows
     - I am using this tool in my current internship with the Mercer University IT Department
     - So far I have learned how to make Request Offerings and edit/create workflows
+- YAML
+    - I used a YAML workflow in my **CSC325** course to publish an app. My experience with these workflows is minimal but I did get a basic grasp of it in the course.
 
 ## Other Non-Programming Knowledge and Experience
 - I have taken coursework in Computer Organization ( unsigned ints, signed ints, IEEE floating point format, RAM layout, logic design, etc. )
 - Through my classes I am learning plenty about various algorithms and techniques for writing programs
 - I am a part of the Binary Bears ( Mercer's Competitive Programming Team ) and have thus far taken part in two seperate competitions between colleges in the South-Eastern United States.
-- Currently I am working as an intern for Mercer University's IT department. My time at this position is spent working with **Ivanti Neurons ITSM** to streamline Service Requests and to create more service requests.
