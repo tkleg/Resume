@@ -8,7 +8,9 @@ function formatToWOutputFromUserID(){
          else
          	cutUserID="$userID"
          fi
-        	wResult=$( w | grep "$cutUserID" | tr -s " " )
+		#the tail handles cases of a user being logged in multiple times
+		# this casues w command to output multiple lines. tail takes just one of them
+        	wResult=$( w | grep "$cutUserID" | tr -s " " | tail -1 )
 		foundUser=$( echo "$wResult" | cut -d " " -f1 )
 	#for some reason w command above kept returning my userID so I used this if statement to check if it found the right user
          if [[ "$cutUserID" == "$foundUser" ]]; then
