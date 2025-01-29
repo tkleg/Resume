@@ -13,14 +13,20 @@ void Base::iam(){
 class One : public Base{
     public:
         void iam2(){
-            iam();
+            Base::iam();
+        }
+        void iam(){
+            cout << "one" << endl;
         }
 };
 
 class Two : public Base{
     public:
         void iam2(){
-            iam();
+            Base::iam();
+        }
+        void iam(){
+            cout << "two" << endl;
         }
 };
 
@@ -35,7 +41,7 @@ int main(){
     derived2.iam2();
     derived2.iam();
     Base *d2Ptr = &derived2;
-    d1Ptr -> iam();
+    d2Ptr -> iam();
     return 0;
 }
 

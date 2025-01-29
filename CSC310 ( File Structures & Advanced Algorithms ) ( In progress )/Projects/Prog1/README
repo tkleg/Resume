@@ -1,0 +1,49 @@
+﻿1. Goal or problem solved by my client program.
+	The goal of this client program was simply to use a binary file of book records and a binary file of transactions to 
+	create a new binary file that contained the original book records with the changes made according to the transactions.
+	This allows changes to be made to the book records easily while keeping them stored with minimal data
+2. A clear specification of all input and output used by the client program. All input/output files should be described.
+   1. The input is two binary files. One contains book records and the other contains transactions to do on the book records.
+	The output is another binary file that contains the modified book records.
+3. Algorithm
+   1. Copy the library master file (the first command line argument is the name ) to a file named “copy.out” to avoid 
+	messing with the master file by mistake.
+   2. Create a map with keys of unsigned ints and values of long. Read the new “copy.out” file by pulling in BookRecs.
+	Do it one at a time, and for each BookRec use tellg to give its location. Assign the book’s ISBN to the map as a key with the
+	tellg result used after it was read as the value ( subtract the byte size of the struct once to make everything line up ).
+   3. Process the transactions
+      1. Read through the binary transaction file (the second command line argument is the name ) one at a time and send each
+	 transaction into a switch statement where each case is a different type of transaction. I used a singular fstream object for
+	 output to the master file so the read/write head would be in the right spot when I wanted to write to the file again.
+         1. Add Transaction
+            1. Take the book in the transaction and look for its isbn in the map's keys. If the ISBN is a key in the map, 
+		print an error message to cout and to a file named “ERRORS”. Otherwise, add the book in the transaction to the “copy.out”
+		file and add its isbn as a key to the map with the current tellg value being the value.
+         2. Delete Transaction
+            1. Take the book in the transaction and look for its isbn in the map’s keys. If it is not there, print an error message
+		to cout and the “ERRORS” file. If the ISBN is in the map as a key, simply remove it from the map,
+		no need to delete it from the master file now.
+         3. Change Price Transaction
+            1. Take the book in the transaction and look for its isbn in the map’s keys. If it is not there, print an error message
+		to cout and the “ERRORS” file. If the isbn is in the map’s keys then change the price stored in the “copy.out” file for
+		the associated book to whatever the transaction book’s price is.
+         4. Change On Hand
+            1. Take the book in the transaction and see if the isbn is in the map’s keys. If the ISBN is not in the map’s keys,
+		print an error message out to cout and the “ERRORS” file. If the isbn is in the map’s keys then check the
+		value of its onhand plus the value of the onhand for the book in the file with the same isbn.
+		If the sum is negative, set the onhand to 0 in the file and print an error message to cout and the “ERRORS” file.
+		If the sum is not negative, set it as the new on-hand value for the book stored in the file with the same
+		isbn as the transaction’s book.
+   4. Write the necessary books to the new master file
+      1. Take the third command line input and iterate over every key in the map. 
+	  For each key move a fstream operating on “copy.out” with seekg( key’s value ). Then read in the book from that location
+	  before writing it out to the file with the name of the third command line argument. 
+	  Note: if the map you are using does not automatically sort the keys in ascending order then you will need to sort them
+	  so that the values are grabbed in the right order.
+   5. Read the new file
+      1. Loop through the new master file and read each book before printing it to cout.
+   6. Delete “copy.out”
+4. Transaction Creation Program
+   1. The testTransact.cpp file creates and prints out a file of transactions that tests every possible error and valid
+	transaction on a new record and a record that originally existed in the library.dat file. In this file, I wrote 
+	what lines the errors should be on and thankfully it was accurate.

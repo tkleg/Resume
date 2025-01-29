@@ -1,0 +1,181 @@
+Script started on 2025-01-24 21:02:11-05:00
+]0;kleger_th@cobra:~/CSC310/Projects/Prog1[kleger_th@cobra Prog1]$ cat update.cpp
+#include <fstream>
+#include <iostream>
+#include <map>
+#include "common.h"
+#include "update.h"
+using namespace std;
+
+int main(int argc, char* argv[]){
+    string copyCommand ="cp " + string(argv[1]) + " copy.out";
+    system(copyCommand.c_str());
+    map<unsigned int, long> isbnLocations = fillMapFromBinary();
+    processTransactions( isbnLocations, argv[2] );
+    writeFinalMasterBinary( isbnLocations, argv[3] );
+    readAndPrintBinaryBooks(argv[3]);
+    system("rm copy.out");
+}
+
+void writeFinalMasterBinary( map<unsigned int, long> isbnLocations, string masterOutName ){
+    fstream binfile("copy.out", ios::in | ios::binary);
+    fstream finalOut(masterOutName, ios::out | ios::binary);
+    BookRec book;
+    map<unsigned int, long>:: iterator it = isbnLocations.begin();
+    while( it != isbnLocations.end() ){
+        binfile.seekg(it -> second);
+        binfile.read( (char *) &book, sizeof(book) );
+        finalOut.write( (char *) &book, sizeof(book) );
+        ++it;
+    }
+    binfile.close();
+    finalOut.close();
+}
+
+
+map<unsigned int, long> fillMapFromBinary(){
+    BookRec book;
+    map<unsigned int, long> isbnLocations;
+    fstream binfile("copy.out", ios::in | ios::binary);
+    binfile.seekg(0);
+    long bookSize = sizeof(BookRec);
+    while( binfile.read( (char *) &book, sizeof(BookRec) ) ){
+        //-sizeof(BookRec) necessary since the first book was not read, the last was read twice, and the isbns were all off
+        isbnLocations[book.isbn] = binfile.tellg()-bookSize;
+    }
+    binfile.close();
+    return isbnLocations;
+}
+
+void processTransactions( map<unsigned int, long> & isbnLocations, string transactionFileName ){
+    TransactionRec transact;
+    fstream binfile(transactionFileName, ios::in | ios::binary);
+    system("cp ERRORS oldERRORS");
+    fstream errorOut("ERRORS", ios::out );
+    fstream masterOut("copy.out", ios::in | ios::out );
+    masterOut.seekg(0);
+    errorOut.seekg(0);
+    binfile.seekg(0);
+    int transactionNumber = 1;
+    while( binfile.read( (char *) &transact, sizeof(transact) ) ){
+        switch( transact.ToDo ){
+            case TransactionType::Add:
+                addRecord( transact, isbnLocations, masterOut, errorOut, transactionNumber );
+                break;
+            case TransactionType::Delete:
+                deleteRecord( transact.B.isbn, isbnLocations, errorOut, transactionNumber);
+                break;
+            case TransactionType::ChangeOnhand:
+                changeOnHand( transact.B, isbnLocations, errorOut, masterOut, transactionNumber );
+                break;
+            case TransactionType::ChangePrice:
+                changePrice( transact.B, isbnLocations, errorOut, masterOut, transactionNumber );
+                break;
+        }
+        transactionNumber++;
+    }
+}
+
+void changePrice( BookRec transactBook, map<unsigned int, long> isbnLocations, fstream & errorOut, fstream & masterOut, int transactionNumber ){
+    BookRec b;
+    string errorMessage;
+    if( isbnLocations.find(transactBook.isbn) == isbnLocations.end() ){
+        errorMessage =  "Error in transaction number " + to_string(transactionNumber) + ": cannot change price---no such key ";
+        errorMessage += isbnToString(transactBook.isbn) + "\n";
+        cout << errorMessage;
+        errorOut << errorMessage;
+    }else{
+        masterOut.seekg( isbnLocations[transactBook.isbn] );
+        masterOut.read( (char *) &b, sizeof(b) );
+        b.price = transactBook.price;
+        masterOut.seekg( isbnLocations[b.isbn] );
+        masterOut.write( (char *) &b, sizeof(b) );
+    }
+}
+
+
+void changeOnHand( BookRec transactBook, map<unsigned int, long> isbnLocations, fstream & errorOut, fstream & masterOut, int transactionNumber ){
+    BookRec b;
+    string errorMessage;
+    if( isbnLocations.find(transactBook.isbn) == isbnLocations.end() ){
+        errorMessage = "Error in transaction number " + to_string(transactionNumber) + ": cannot change count---no such key ";
+        errorMessage += isbnToString(transactBook.isbn) + "\n";
+        cout << errorMessage;
+        errorOut << errorMessage;
+    }else{
+        masterOut.seekg( isbnLocations[transactBook.isbn] );
+        masterOut.read( (char *) &b, sizeof(b) );
+        int newOnHand = b.onhand + transactBook.onhand;
+        if( newOnHand < 0 ){
+            errorMessage = "Error in transaction number " + to_string(transactionNumber) + ": count = " + to_string(newOnHand) + " for key "; 
+            errorMessage += isbnToString(b.isbn) + "\n";
+            cout << errorMessage;
+            errorOut << errorMessage;
+            newOnHand = 0;
+        }
+        b.onhand = newOnHand;
+        masterOut.seekg( isbnLocations[b.isbn] );
+        masterOut.write( (char *) &b, sizeof(b) );
+    }
+
+}
+
+void deleteRecord( long isbnToDelete, map<unsigned int, long> & isbnLocations, fstream & errorOut, int transactionNumber ){
+    string errorMessage;
+    if( isbnLocations.find(isbnToDelete) == isbnLocations.end() ){
+        errorMessage = "Error in transaction number " + to_string(transactionNumber) + ": cannot delete---no such key ";
+        errorMessage += isbnToString(isbnToDelete) + "\n";
+        errorOut << errorMessage;
+        cout << errorMessage;
+    }else
+        isbnLocations.erase(isbnToDelete);
+}
+
+void addRecord( TransactionRec transact, map<unsigned int, long> & isbnLocations, fstream & masterOut, fstream & errorOut, int transactionNumber ){
+    string errorMessage;
+    if( isbnLocations.find(transact.B.isbn) == isbnLocations.end() ){
+        long recordLocation = 0;
+        masterOut.seekg(0, ios::end);
+        isbnLocations[transact.B.isbn] = masterOut.tellg();
+        masterOut.write( (char *) &transact.B, sizeof(transact.B) );
+    }else{
+        errorMessage = "Error in transaction number " + to_string(transactionNumber) + ": cannot add---duplicate key ";
+        errorMessage += isbnToString(transact.B.isbn) + "\n";
+        errorOut << errorMessage;
+        cout << errorMessage;
+    }
+}
+
+void readAndPrintBinaryBooks(string fileName){
+    BookRec book;
+    fstream binfile(fileName, ios::in | ios::binary);
+    binfile.seekg(0, ios::beg);
+    while( binfile.read( (char *) &book, sizeof(BookRec) ) )
+    	cout << bookToString(book);
+}
+]0;kleger_th@cobra:~/CSC310/Projects/Prog1[kleger_th@cobra Prog1]$ c+++ upda[K[K[K[K[K[K[K upd[K[K[K[K+ update.cpp
+]0;kleger_th@cobra:~/CSC310/Projects/Prog1[kleger_th@cobra Prog1]$ a.out library.out testTransactions master.out
+Error in transaction number 2: cannot add---duplicate key 0123456789
+Error in transaction number 4: cannot delete---no such key 0123456789
+Error in transaction number 6: count = -2147483644 for key 0123456789
+Error in transaction number 7: cannot change count---no such key 0000000001
+Error in transaction number 10: cannot change price---no such key 0000000001
+Error in transaction number 12: cannot add---duplicate key 0123766891
+Error in transaction number 14: cannot delete---no such key 0123766891
+Error in transaction number 16: count = -2147483647 for key 0123766891
+Error in transaction number 17: cannot change count---no such key 0000000002
+Error in transaction number 21: cannot change price---no such key 0000000002
+0123456789                 1984          Orwell, George 132   9.89   fiction
+0123766891           Tom Sawyer             Twain, Mark 121  15.72   fiction
+0239678325      Leaves of Grass           Whitman, Walt   8  29.99    poetry
+0243578325     Romeo and Juliet    Shakespeare, William   6   4.99     drama
+0249638325         Great Gatsby    Fitzgerald, F. Scott   0   5.99   fiction
+0259648323       Scarlet Letter    Hawthorne, Nathaniel   8   4.78   fiction
+1229648991 Whisper of the River            Sams, Ferrol   4  21.95   fiction
+2119674425 Last of the Mohicans  Cooper, James Fenimore   1   8.75   fiction
+3393578325       Les Miserables            Hugo, Victor   2  19.98   fiction
+3791527325     Canterbury Tales       Chaucer, Geoffrey   1  20.00     drama
+]0;kleger_th@cobra:~/CSC310/Projects/Prog1[kleger_th@cobra Prog1]$ exit
+exit
+
+Script done on 2025-01-24 21:02:59-05:00

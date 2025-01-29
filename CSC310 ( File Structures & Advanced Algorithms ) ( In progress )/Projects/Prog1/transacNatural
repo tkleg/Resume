@@ -1,0 +1,22 @@
+          Add: 0123456789                 1984          Orwell, George   5  15.65   fiction
+          Add: 0123456789                 1984          Orwell, George   5  15.65   fiction
+       Delete: 0123456789                 1984          Orwell, George   5  15.65   fiction
+       Delete: 0123456789                 1984          Orwell, George   5  15.65   fiction
+          Add: 0123456789                 1984          Orwell, George   5  15.65   fiction
+ ChangeOnhand: 0123456789                 1984          Orwell, George2147483647  15.65   fiction
+ ChangeOnhand: 0000000001                 1984          Orwell, George   9  15.65   fiction
+ ChangeOnhand: 0123456789                 1984          Orwell, George   9  15.65   fiction
+ ChangeOnhand: 0123456789                 1984          Orwell, George 123  15.65   fiction
+  ChangePrice: 0000000001                 1984          Orwell, George 123  15.65   fiction
+  ChangePrice: 0123456789                 1984          Orwell, George 123   9.89   fiction
+          Add: 0123766891           Tom Sawyer             Twain, Mark   2   8.50   fiction
+       Delete: 0123766891           Tom Sawyer             Twain, Mark   2   8.50   fiction
+       Delete: 0123766891           Tom Sawyer             Twain, Mark   2   8.50   fiction
+          Add: 0123766891           Tom Sawyer             Twain, Mark   2   8.50   fiction
+ ChangeOnhand: 0123766891           Tom Sawyer             Twain, Mark2147483647   8.50   fiction
+ ChangeOnhand: 0000000002           Tom Sawyer             Twain, Mark  20   8.50   fiction
+ ChangeOnhand: 0123766891           Tom Sawyer             Twain, Mark  20   8.50   fiction
+ ChangeOnhand: 0123766891           Tom Sawyer             Twain, Mark  99   8.50   fiction
+ ChangeOnhand: 0123766891           Tom Sawyer             Twain, Mark   2   8.50   fiction
+  ChangePrice: 0000000002           Tom Sawyer             Twain, Mark   2   8.50   fiction
+  ChangePrice: 0123766891           Tom Sawyer             Twain, Mark   2  15.72   fiction

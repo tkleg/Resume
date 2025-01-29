@@ -1,0 +1,10 @@
+Error in transaction number 2: cannot add---duplicate key 0123456789
+Error in transaction number 4: cannot delete---no such key 0123456789
+Error in transaction number 6: count = -2147483644 for key 0123456789
+Error in transaction number 7: cannot change count---no such key 0000000001
+Error in transaction number 10: cannot change price---no such key 0000000001
+Error in transaction number 12: cannot add---duplicate key 0123766891
+Error in transaction number 14: cannot delete---no such key 0123766891
+Error in transaction number 16: count = -2147483647 for key 0123766891
+Error in transaction number 17: cannot change count---no such key 0000000002
+Error in transaction number 21: cannot change price---no such key 0000000002
