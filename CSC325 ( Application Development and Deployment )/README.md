@@ -8,4 +8,4 @@ Note: If at anypoint in **VSCode** the terminal is not appearing and you need it
 5. Click the blue button at the buttom left of **VSCode**, then click **Reopen in Container** in the drop down menu from the top of the screen.
 6. In the terminal, run `cd app` to cd into the app's directory
 7. In the terminal, run the command `flutter run -d web-server` to run the app
-8. Finally, click the localhost link that appears in the terminal ( this may take around a minute to appear).
+8. Finally, click the localhost link that appears in the terminal ( this may take around a minute to appear ).
