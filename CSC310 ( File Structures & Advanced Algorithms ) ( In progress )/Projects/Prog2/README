@@ -1,0 +1,29 @@
+Plan for the File class
+1. Create methods to get the various fields of the File class
+2. Pass the output of these methods to the explicit constructor of the File class to create a new File object
+3. Plans for attributes
+    3a. name: The path to the file from where it is existing prior to being in the tar file. I will use this to read in file contents, write out file contents, read in metadata, and set file metadata to the write file
+    3b. pmode: This will be used to read the protection mode of files and to set them for files after being created
+    3c. size: This will be used to know how many bytes to read in when making a tar file, to know how many bytes to skip over when listing files in a tar file, and to know how many bytes to read from a tar and write to a file when unpacking a tar file
+    3d stamp: This will be used to hold the access time of files when they are packed and to set the access and modify time of files when they are unpacked from a tar file
+    3e. ADir: Used to specific wheterh or not a file is a directory or a regular file. Used for stopping file contents being written to tar for a directory, to stop contents being read in from a tar file for a directory, and to make sure directories get created with mkdir instead of creating files with their name
+4. Plans for operations
+    4a. getSize(): used to get the size of the file as a string for reasons mentioned in 3c
+    4b. getName(): used to get the name of the file as a string for reasons mentioned in 3a
+    4c. getPmode(): used to get the protection mode of the file as a string for reasons mentioned in 3b
+    4d. getStamp(): used to get the access timestamp of the file as a string for reasons mentioned in 3d
+    4e. isADir(): used to get the ADir flag from the file for reasons mentioned in 3e
+
+cf Development
+1. Get every path name that we need to process
+2. Use system calls to get the necessary information for each file and put a File object in a vector for all paths
+3. Write the tar file using the vector of File's we have
+3a. Write out the number of files in the tar file in binary
+3b. For every file in the vector print out the File object as binary. If the file is not a directory, get the contents of the file and write that out to the tar file directly.
+
+xf Development
+1. Read in an int representing the number of files in the tar file
+2. Read in a File object from the tar file
+    2a1. If it is a directory: If it exists already, do nothing. Otherwise, create the directory
+    2a2. If it is a file: Read in the amount of bytes specific in the File object size. Immediately write these out to the file specific by the File object's name.
+3. For each file, set the pmode and the access and modify time using system calls and data in the File objects

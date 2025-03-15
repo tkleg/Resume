@@ -1,0 +1,91 @@
+Script started on 2025-03-10 20:48:15-04:00
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ exitmyJTar --help thgiurn[Kxf Examples ttf t.tar test[5Pcf t.tar[Kc++ jtar.cpp -o myJTarexit[KmyJTar -tfcf t.tar testerest.tar Examples SmallFiles/ help README[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C-help[Kxf Examples ttf t.tar test[5Pcf t.tar[K[Kc++ jtar.cpp -o myJTarexit[KmyJTar -cf exitexit[Kc++ jtar.cpp -o myJTar
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ y[KmyJTar
+jtar: You must specify one of the options
+Try `jtar --help' for more information.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ mjy[K[KyJTar -cf test.tar
+jtar: Invalid format
+Try 'jtar --help' for more information.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar -cf test.tar[K[K[K[K[K[K[K[K[K[K[Kxf t.tar t
+jtar: Invalid format
+Try 'jtar --help' for more information.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar -xf t.tar t[1P[1@t
+jtar: Invalid format
+Try 'jtar --help' for more information.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar -tf t.tar t[K[K[K[K[K[K[K[K[K[K-help gg
+`jtar' saves many files together into a single tape or disk archive,
+and can restore individual files from the archive.
+
+Usage: tar [OPTION]... [FILE]...
+
+Option Examples:
+tar -cf archive.tar foo bar  # Create archive.tar from files foo and bar.
+tar -tf archive.tar          # List all files in archive.tar verbosely.
+tar -xf archive.tar          # Extract all files from archive.tar.
+Report bugs to <11035376@live.mercer.edu>.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar --help gg[K[K[K
+`jtar' saves many files together into a single tape or disk archive,
+and can restore individual files from the archive.
+
+Usage: tar [OPTION]... [FILE]...
+
+Option Examples:
+tar -cf archive.tar foo bar  # Create archive.tar from files foo and bar.
+tar -tf archive.tar          # List all files in archive.tar verbosely.
+tar -xf archive.tar          # Extract all files from archive.tar.
+Report bugs to <11035376@live.mercer.edu>.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar --help[K[K[K[K[K[K--help gg[K[K[K[K[K[K[K[Kc test.ar
+jtar: Invalid option (-c)
+Try 'jtar --help' for more information.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar -cf test.tar nonexistent
+jtar: "nonexistent" does not exist.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar -cf test.tar nonexistent[K[K[K[K[K[K[K[K[K[K[KExamples/[K/ SmallFiles/ emptyFile help 
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar -tf notar.tar[1Par.tarTar.tar
+jtar: "noTar.tar" does not exist.
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ myJTar -tf noTar.tar[K[K[K[K[K[K[K[K[K[K[K[Kt[Ktf test.tar
+Examples/
+Examples/emptyFile
+Examples/rhymes
+Examples/SmallFiles/
+Examples/SmallFiles/emptyFile
+Examples/SmallFiles/file1
+Examples/SmallFiles/file2
+Examples/SmallFiles/list
+Examples/SmallFiles/midnight
+SmallFiles/
+SmallFiles/emptyFile
+SmallFiles/file1
+SmallFiles/file2
+SmallFiles/list
+SmallFiles/midnight
+emptyFile
+help
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ mk[K[Kmkdir xf Ho[K[K[KHolder
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2[kleger_th@cobra Prog2]$ cd xfHolder/
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ mv ../test.tar .[1P[1P[1@c[1@p
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ ../myJTar test.tar[C-test.tarxtest.tarftest.tar test.tar
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ ls
+emptyFile  [0m[34;42mExamples[0m  help  [01;34mSmallFiles[0m  [01;31mtest.tar[0m
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm -r R[KExamples/
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm -r SmallFiles/
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm help 
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm emptyFile 
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ c[Kls
+[0m[01;31mtest.tar[0m
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ mkdir Examples
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ mkdir Examplesls[Krm emptyFile [5Phelp[C-r SmallFiles/[2PExamples/ls[K../myJTar -xf test.tar
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ ls
+emptyFile  [0m[34;42mExamples[0m  help  [01;34mSmallFiles[0m  [01;31mtest.tar[0m
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm emptyFile 
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm E[K-r Examples/
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm help 
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ rm -Sm[K[K[K-r SmallFiles/
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ mkdir Examples
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ touch e[K[K[K[K[K[K[Ktouch Examples/notInTar
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ touch Examples/notInTar[9Pmkdir Examplesrm -r SmallFiles/[9Phelp -r Examples/[2PemptyFile ls[K../myJTar -xf test.tar[8Pmkdir Examples../myJTar -xf test.tar
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ ls Examples/
+[0m[01;32memptyFile[0m  notInTar  [01;32mrhymes[0m  [01;34mSmallFiles[0m
+]0;kleger_th@cobra:~/CSC310/Projects/Prog2/xfHolder[kleger_th@cobra xfHolder]$ exit
+exit
+
+Script done on 2025-03-10 20:55:05-04:00
