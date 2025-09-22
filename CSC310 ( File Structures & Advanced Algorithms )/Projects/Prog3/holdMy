@@ -1,0 +1,10 @@
+Now inserting 08722|Counting Crows|This Desert Life|
+Now inserting 75599|U2|All That You Can't Leave Behind|
+Now inserting 42276|Tom Petty|Into the Great Wide Open|
+Now inserting 02284|Kenny Loggins|Footloose|
+-------- B-tree of height 0 --------
+    *** node of size 4 ***     
+02284|Kenny Loggins|Footloose|
+08722|Counting Crows|This Desert Life|
+42276|Tom Petty|Into the Great Wide Open|
+75599|U2|All That You Can't Leave Behind|

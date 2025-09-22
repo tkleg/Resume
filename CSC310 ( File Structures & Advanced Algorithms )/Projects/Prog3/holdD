@@ -1,0 +1,26 @@
+Now inserting 08722|Counting Crows|This Desert Life|
+Now inserting 75599|U2|All That You Can't Leave Behind|
+Now inserting 42276|Tom Petty|Into the Great Wide Open|
+Now inserting 02284|Kenny Loggins|Footloose|
+Now inserting 20831|Dave Matthews|Everyday|
+Now Splitting!
+Now Adjusting Root!
+Now inserting 99000|Train|Drops of Jupiter|
+Now inserting 00100|Dido|No Angel|
+Now inserting 00101|Eva Cassidy|Songbird|
+Now inserting 00102|Metallica|Ride the Lightning|
+Now Splitting!
+-------- B-tree of height 1 --------
+    *** node of size 2 ***     
+00102|Metallica|Ride the Lightning|
+20831|Dave Matthews|Everyday|
+    *** node of size 2 ***     
+00100|Dido|No Angel|
+00101|Eva Cassidy|Songbird|
+    *** node of size 2 ***     
+02284|Kenny Loggins|Footloose|
+08722|Counting Crows|This Desert Life|
+    *** node of size 3 ***     
+42276|Tom Petty|Into the Great Wide Open|
+75599|U2|All That You Can't Leave Behind|
+99000|Train|Drops of Jupiter|

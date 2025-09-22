@@ -1,0 +1,132 @@
+Script started on 2025-03-24 20:28:17-04:00
+]0;kleger_th@cobra:~/CSC310/Labs/Lab4[kleger_th@cobra Lab4]$ cat mp3.cpp
+#include "objects.cpp"
+#include "mp3.h"
+
+int main(int argc, char* argv[]){
+    if( argc == 1 ){
+        cerr << "mp3: missing filename 'mp3'" << endl;
+        exit(1);
+    }
+    vector<Song> songs;
+    vector<SongHelp> songHelpers;
+    getSongs( argv[1], songs, songHelpers );
+    ArtistSet artists = getArtists( songs, songHelpers );
+    for( auto artist : artists )
+        artist->printArtist();
+    return 0;
+}
+
+ArtistSet getArtists( vector<Song> songs, vector<SongHelp> songHelpers ){
+    ArtistSet artists;
+    set<string> artistNames;
+    for( int x = 0; x < songHelpers.size(); x++ ){
+        shared_ptr<Artist> songArtist = assignArtist( songHelpers[x].artist, artists, artistNames );
+        songArtist->time += songs[x].time;
+        songArtist->nsongs++;
+        assignAlbum( songArtist->albums, songs[x], songHelpers[x] );
+    }    
+    return artists;
+}
+
+void assignAlbum( set<Album> & albums, Song song, SongHelp songHelper ){
+    Album songAlbum;
+    set<Album>::iterator it;
+    map<int, Song> songs;
+    bool insertAlbum = true;
+    for( it = albums.begin(); it != albums.end(); it++ ){
+        if( it->name == songHelper.album ){//true if the song's album is already present
+            (it->songs)[song.track] = song;
+            it->time += song.time;
+            it->nsongs++;
+            insertAlbum = false;
+        }
+    }
+    songs[song.track] = song;
+    if( insertAlbum )//true if the song is associated with an album that does not yet exist
+        albums.insert( Album( songs, songHelper.album, songHelper.artist, songHelper.genre, song.time, 1 ) );
+}
+
+ArtistPtr assignArtist( string artistName, ArtistSet & artists, set<string> & artistNames ){
+    if( artistNames.count( artistName ) == 0 ){//true if the artist already exists
+        ArtistPtr songArtist = make_shared<Artist>();
+        songArtist->name = artistName;
+        songArtist->albums = set<Album>();
+        songArtist->time = 0;
+        songArtist->nsongs = 0;
+        artists.insert( songArtist );
+        artistNames.insert( artistName );
+        return songArtist;
+    }
+    //reachable only for already existing artists
+    for (auto& artist : artists) 
+        if (artist->name == artistName) 
+            return artist;
+    return nullptr;//never runs, necessary for compiler however
+}
+
+void getSongs( char* fileName, vector<Song> & songs, vector<SongHelp> & songHelpers ){
+    fstream in(fileName, ios::in);
+    string line;
+
+    string title;
+    int mins;
+    string minsS;
+    int secs;
+    int time;
+    string artist;
+    string album;
+    string genre;
+    int track; 
+    while( true ){
+        in >> title;
+        getline(in, minsS, ':');
+        mins = atoi( minsS.c_str() );
+        in >> secs >> artist >> album >> genre >> track;
+        if( !in )
+            break;
+        time = 60*mins + secs;
+        noUnderscores(title);
+        noUnderscores(artist);
+        noUnderscores(album);
+        Song song{ title, time, track };
+        SongHelp songHelper{ artist, album, genre };
+        songs.push_back(song);
+        songHelpers.push_back(songHelper);
+    }
+}
+
+void noUnderscores( string & s ){
+    for( int x = 0; x < s.size(); x++)
+            if( s[x] == '_' )
+                s[x] = ' ';
+}]0;kleger_th@cobra:~/CSC310/Labs/Lab4[kleger_th@cobra Lab4]$ make
+g++ -c mp3.cpp
+g++   mp3.o   -o mp3
+]0;kleger_th@cobra:~/CSC310/Labs/Lab4[kleger_th@cobra Lab4]$ mp3 music.txt 
+Coltrane, John: 4, 18:37
+        Giant Steps: 4, 18:37
+                1.  Giant Steps: 4:46
+                3.  Countdown: 2:25
+                6.  Naima: 4:24
+                7.  Mr. P.C.: 7:02
+Lyle, Bobby: 1, 5:16
+        Night Breeze: 1, 5:16
+                5.  Naima: 5:16
+Puente, Tito: 1, 4:02
+        El Rey: 1, 4:02
+                5.  Giant Steps: 4:02
+Tjader, Cal: 1, 5:36
+        A Fuego Vivo: 1, 5:36
+                6.  Naima: 5:36
+Walton, Cedar: 4, 30:44
+        Eastern Rebellion: 1, 8:38
+                2.  Naima: 8:38
+        Naima: 3, 22:06
+                2.  This Guy's In Love With You: 8:10
+                4.  Down In Brazil: 6:07
+                6.  Naima: 7:49
+]0;kleger_th@cobra:~/CSC310/Labs/Lab4[kleger_th@cobra Lab4]$ exit
+exit
+
+Script done on 2025-03-24 20:28:45-04:00

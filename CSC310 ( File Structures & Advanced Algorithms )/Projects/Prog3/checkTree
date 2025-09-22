@@ -1,0 +1,13 @@
+#!/bin/bash
+
+albumFiles=( "baby" "large" "med" "rand" "small" )
+
+c++ btree.cpp -o bashCheck
+
+for line in ${albumFiles[@]}; do
+    bashCheck album.$line my.ind > my
+    createBT album.$line tree.ind > digh
+    diff my digh
+done
+
+rm bashCheck
