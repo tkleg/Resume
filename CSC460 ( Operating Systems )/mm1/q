@@ -1,0 +1,5 @@
+#rm ids &> /dev/null
+deleteSems > /dev/null
+deleteShared > /dev/null
+killProdsCons > /dev/null
+ipcs | grep kleger

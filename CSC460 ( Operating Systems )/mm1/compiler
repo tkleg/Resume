@@ -1,0 +1,3 @@
+cc producer.c -o prod
+cc consumer.c -o cons
+cc stop.c -o stop

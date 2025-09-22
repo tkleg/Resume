@@ -1,0 +1,15 @@
+#!/bin/bash
+cc daemon.c -o daemon
+cc user.c -o user
+daemon 10 &
+sleep 3
+for _ in {1..20}; do
+	user &
+done
+sleep 5
+for _ in {1..10}; do
+	user &
+done
+sleep 5
+user &
+user &

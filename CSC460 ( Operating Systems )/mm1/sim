@@ -1,0 +1,2 @@
+simHelp &
+#this is used so that the actually sim process can be a background process without having to call it as one

@@ -1,0 +1,12 @@
+rm prodSemIds ids &> /dev/null
+compiler
+cons 6 6 4 &
+sleep 1
+prod 5 8 &
+sleep 1 
+prod 20 10 &
+sleep 4
+for i in {1..20}; do
+	prod $i 5 &
+	sleep 1
+done
