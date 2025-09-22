@@ -42,4 +42,7 @@ Currently looking to gain experience that will assist be in attaining a full-tim
 - I have taken coursework in Computer Organization ( unsigned ints, signed ints, IEEE floating point format, RAM layout, logic design, etc. )
 - Through my classes I am learning plenty about various algorithms and techniques for writing programs
 - I am a part of the Binary Bears ( Mercer's Competitive Programming Team ) and have thus far taken part in two seperate competitions between colleges in the South-Eastern United States.
-- Note that not 100% of the programs are fully functional. Some programs such as in the Operating Systems class were never fully finished and are very buggy.
+
+## Disclaimer
+- Not every program can be run on every machine. Most programs will require certain compiler versions.
+- `safeDiner` and `mm1` in the `Operating Systems` class have bugs and do not fully work.
