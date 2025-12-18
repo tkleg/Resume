@@ -1,0 +1,20 @@
+{
+    "name": "HVAC Fuzzy Control",
+    "build": {
+        "dockerfile": "DockerFile",
+        "context": ".."
+    },
+    "features": {},
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.jupyter",
+                "ms-toolsai.jupyter-rendel rers"
+            ]
+        }
+    },
+    "forwardPorts": [],
+    "postCreateCommand": "pip install ipykernel -U --user --force-reinstall",
+    "remoteUser": "root"
+}

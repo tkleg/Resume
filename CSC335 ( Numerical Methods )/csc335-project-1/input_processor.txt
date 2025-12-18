@@ -1,0 +1,18 @@
+File Name: testdata.dat
+
+Baseline: 1400
+
+Tolerance: 1e-11
+
+Filter Type: Discrete Fourier Transform
+
+Filter Window Size: 5
+
+Number of Passes: 5
+
+Integration Type: Adaptive
+
+Recovery method: Inverse
+
+Output File Name: analysis.txt
+

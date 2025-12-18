@@ -1,0 +1,33 @@
+          -=> NMR ANALYSIS <=-
+
+
+Program Options
+====================
+Baseline Adjustment :	2500
+Tolerance           :	1e-10
+Filter Type         :	Discrete Fourier Transform Filter
+
+Techniques
+====================
+Integration Method  :	Gauss-Legendre Quadrature Integration
+DFT Recovery Method :	Direct Matrix Factorization
+
+Plot File Data
+====================
+Input File          :	testdata2.dat
+Plot shifted by 10.16 ppm for TMS calibration
+
+Peak     Begin             End              Location         Top              Area             Hydrogens
+=======  ================  ================ ================ ================ ================ =========
+   1       -10.1696426518    -10.1471221210   -10.1583823864    3279.57932383  4.57127732E+01         3
+   2        -8.7272470529     -8.7033141778    -8.7152806154     896.48754308  1.39994906E+01         1
+   3        -8.5320960994     -8.5061124062    -8.5191042528    2737.70190900  4.40452776E+01         3
+   4        -8.3102284789     -8.2005436097    -8.2553860443   82792.54933121  3.84166508E+03       274
+   5        -8.1174511161     -8.0148983395    -8.0661747278   60364.04887814  3.81981962E+03       273
+   6        -7.7993996525     -7.7643405387    -7.7818700956    2442.21488565  5.43685562E+01         4
+   7        -7.5997000867     -7.5719205825    -7.5858103346    4674.90977461  7.88551428E+01         6
+   8        -5.5367231753     -5.4350906159    -5.4859068956   50607.49284552  2.29029301E+03       164
+
+Total integrated area: 1.01887590E+04
+
+Total elapsed time: 27.5526 seconds
