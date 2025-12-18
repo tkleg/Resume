@@ -6,6 +6,12 @@
 - You will need the Armadillo library installed in order to run the project and some of the later homework questions.
 - g++ version 15.2 was used for compilation of all C++ code. Data structures such as pair and optional are used, which do not exist in some older versions.
 
+### Languages Utilized
+- C++ ( By far the most used )
+- Python
+- Java
+- Fortran
+
 ### Homework
 - The homework folder in this directory contains all homework problems that were completed via code ( almost all problems ).
 - The problems are mostly about various algorithms that complete problems including the following types, and more.
